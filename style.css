@@ -15,6 +15,11 @@ main {
     justify-content: center;
 }
 
+span {
+    font-size: 17px;
+    color: #eb5951;
+}
+
 .latar {
     background: purple;
     min-height: 80vh;
