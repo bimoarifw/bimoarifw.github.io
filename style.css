@@ -1,0 +1,205 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+
+main {
+    min-height: 100vh;
+    background: linear-gradient(to right top,
+            #2b164f,
+            #000000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.latar {
+    background: purple;
+    min-height: 80vh;
+    width: 60%;
+    background: linear-gradient(to right bottom, rgba(71, 36, 131, 0.7), rgba(19, 7, 39, 0.3));
+    border-radius: 2rem;
+    z-index: 1;
+    backdrop-filter: blur(10px);
+    /* opacity: 0.9; */
+    box-sizing: content-box;
+    text-align: center;
+}
+
+.bola1,
+.bola2 {
+    background: white;
+    background: linear-gradient(to right bottom, rgba(71, 36, 131, 1), rgba(71, 36, 131, 0.5));
+    height: 10rem;
+    width: 10rem;
+    position: absolute;
+}
+
+.bola1 {
+    top: 5%;
+    right: 15%;
+    border-radius: 50%;
+}
+
+.bola2 {
+    bottom: 5%;
+    left: 15%;
+    border-radius: 50%;
+}
+
+.logo {
+    margin: 20px auto;
+}
+
+.logo h1 {
+    color: white;
+    font-size: 40px;
+    opacity: 0.7;
+    transition: all .3s;
+}
+
+h1:hover {
+    cursor: pointer;
+    /* transform: scale(1.4); */
+    text-decoration: blink;
+    animation-name: blinker;
+    animation-duration: 0.6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-direction: alternate;
+}
+
+@keyframes blinker {
+    from {
+        opacity: 0.9;
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
+
+
+.foto img {
+    height: 100px;
+    width: 100px;
+    border-radius: 2rem;
+    position: relative;
+    /* z-index: 3; */
+    transition: 0.5s;
+}
+
+.foto img:hover {
+    transform: scale(1.5);
+    box-shadow: 2px 2px 12px #5d22c2,
+        -2px -2px 12px #5d22c2;
+}
+
+.link {
+    padding-top: 30px;
+}
+
+button {
+    color: #ffffff;
+    padding: 0.7em 1.7em;
+    font-size: 18px;
+    margin: 10px;
+    border-radius: 0.5em;
+    background:
+        #5d22c2;
+    border: 1px solid #5d5d5d;
+    transition: all .3s;
+    box-shadow: 6px 6px 12px #402076,
+        -6px -6px 12px #472483;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 1px solid purple;
+    transform: scale(1.4);
+}
+
+button:active {
+    box-shadow: 4px 4px 12px #402076,
+        -4px -4px 12px #472483;
+}
+
+.kata {
+    margin: 20px auto;
+    width: 50%;
+    color: white;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, #2b164f, #8c8b8b, #2b164f);
+    background-image: -moz-linear-gradient(left, #2b164f, #8c8b8b, #2b164f);
+    background-image: -ms-linear-gradient(left, #2b164f, #8c8b8b, #2b164f);
+    background-image: -o-linear-gradient(left, #2b164f, #8c8b8b, #2b164f);
+}
+
+@media screen and (max-width: 1100px) {
+    .latar {
+        width: 60%;
+        min-height: 40vh;
+    }
+
+    .bola1 {
+        top: 25%;
+    }
+
+    .bola2 {
+        bottom: 25%;
+    }
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 600px) {
+    .latar {
+        width: 80%;
+        min-height: 70vh;
+    }
+
+    .bola1,
+    .bola2 {
+        height: 8rem;
+        width: 8rem;
+    }
+
+    .bola1 {
+        top: 8%;
+        right: 2%;
+    }
+
+    .bola2 {
+        bottom: 8%;
+        left: 2%;
+    }
+
+    .logo h1 {
+        font-size: 30px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 0.5em 1.5em;
+    }
+
+    .kata {
+        padding-top: 40px;
+        width: 65%;
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .kata {
+        padding-top: 20px;
+        width: 70%;
+        font-size: 15px;
+    }
+}
