@@ -16,8 +16,9 @@ main {
 }
 
 span {
-    font-size: 17px;
+    /* font-size: 17px; */
     color: #eb5951;
+    font-weight: bold;
 }
 
 .latar {
