@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background:url(img/bg.png) ;
+    /* background-repeat: no-repeat; */
+    background-size: contain;
+    text-align: center;
+    margin: 30px;
+}
+img {
+    display: block;
+    width: 100%;
+    border-radius: 1em;
+    border: 3px solid black;
+}
+.galeri {
+    width: 80%;
+    background: rgba(0,0,0,0.3);
+    margin: 20px auto;
+    border: 1em solid transparent;
+    list-style: none;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.3), -2px -2px 2px rgba(0,0,0,0.3);
+    border-radius: 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+    gap: 2em;
+    backdrop-filter: blur(30px);
+    z-index: 1;
+}
