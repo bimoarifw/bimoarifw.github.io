@@ -563,7 +563,7 @@ input {
     bottom: 5px;
     left: 0;
     height: 1px;
-    width: 135px;
+    width: 20%;
     background-color: var(--secondary-color);
 }
 
