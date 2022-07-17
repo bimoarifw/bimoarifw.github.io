@@ -56,8 +56,14 @@ hr {
     border: none;
     font-size: 14px;
     border-radius: 1em;
+    background-color: var(--primary-color);
     box-shadow: 20px 20px 30px #bebebe;
     cursor: pointer;
+}
+
+.tombol__satu:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .judul,
