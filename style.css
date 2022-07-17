@@ -682,15 +682,15 @@ input {
     }
 
     .bar .proses__skill.html span {
-        width: 90%;
+        width: 100%;
     }
 
     .bar .proses__skill.css span {
-        width: 80%;
+        width: 100%;
     }
 
     .bar .proses__skill.JS span {
-        width: 50%;
+        width: 100%;
     }
 
 
