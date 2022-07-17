@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
+    text-decoration: none;
 }
 
 main {
@@ -13,6 +14,12 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+span {
+    /* font-size: 17px; */
+    color: #eb5951;
+    font-weight: bold;
 }
 
 .latar {

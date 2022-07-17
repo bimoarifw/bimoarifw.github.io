@@ -2,70 +2,296 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description"
-        content="Hasil latihan web design milik saya dengan dibantu oleh berbagai macam tutorial dari orang-orang hebat.">
-    <meta name="keywords" content="HTML, CSS, bimoarifw">
-    <meta name="author" content="Bimo Arif W">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://use.fontawesome.com/releases/v6.1.1/js/all.js" data-auto-replace-svg></script>
-    <title>Bimo Arif W</title>
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <main>
-        <section class="latar">
+    <!-- Header dan Navigasi -->
+    <header class="header">
+        <nav class="nav__bungkus">
+            <a href="#" class="nav__logo">BimoArifW</a>
 
-            <!-- HEADER -->
-            <div data-aos="fade-in" data-aos-duration="3000">
-                <div class="logo">
-                    <h1>BIMO<span> ARIF</span></h1>
-                </div>
+            <div class="nav__menu">
+                <ul class="nav__list">
+                    <li class="nav__isi">
+                        <a href="#Home" class="nav__link">
+                            <i class="ri-home-6-line nav__icon"></i>
+                            <span class="nav__judul">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav__isi">
+                        <a href="#About" class="nav__link">
+                            <i class="ri-user-line nav__icon"></i>
+                            <span class="nav__judul">About</span>
+                        </a>
+                    </li>
+                    <li class="nav__isi">
+                        <a href="#Project" class="nav__link">
+                            <i class="ri-folder-open-line nav__icon"></i>
+                            <span class="nav__judul">Project</span>
+                        </a>
+                    </li>
+                    <li class="nav__isi">
+                        <a href="#Contact" class="nav__link">
+                            <i class="ri-mail-line nav__icon"></i>
+                            <span class="nav__judul">Contact</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div data-aos="fade-in" data-aos-duration="3000">
-                <div class="foto">
-                    <img src="https://res.cloudinary.com/bimoarifw/image/upload/v1657515027/Bimo1.jpg" alt="">
-                </div>
-            </div>
-            <!-- SOSMED -->
-            <div data-aos="zoom-out" data-aos-duration="3000">
-                <div class="link">
-                    <a href="/Project/index.html">
-                        <button><i class="fa-solid fa-list-check"></i></button>
-                    </a>
-                    <a href="https://www.instagram.com/bimoarifw/">
-                        <button><i class="fa-brands fa-instagram"></i></button>
-                    </a>
-                    <a href="https://github.com/bimoarifw">
-                        <button><i class="fa-brands fa-github"></i></button>
-                    </a>
-                </div>
-            </div>
-            <!-- KATA -->
-
-            <div data-aos="zoom-in" data-aos-duration="3000">
-                <div class="kata">
-                    <p><span>Hello everyone! </span>I'm currently learning to be a front end developer. I'm a beginner and a
-                        lifelong learner.</p>
-                    <br>
-                    <hr>
-                </div>
-            </div>
+        </nav>
+    </header>
 
 
+    <!-- Jumbotron -->
+
+
+    <div data-aos="fade-up" data-aos-duration="1000">
+        <section class="jumbotron" id="Home">
+            <div class="jumbotron__bungkus">
+                <div class="jumbotron__teks">
+                    <div class="jumbotron__konteks">
+                        <h2>Bimo <span>Arif</span> W</h2>
+                        <p> <span class="span__p">Hello, Yes! the text above is my name! </span> This is a page that I made myself with various display
+                            references that made me interested to try it.</p>
+                        <a href="#"><button class="tombol__satu">Contact</button></a>
+                        <span> &nbsp; </span>
+                        <a href="#"><button class="tombol__satu">Download CV</button></a>
+                    </div>
+                </div>
+                <div class="jumbotron__gambar">
+                    <div class="bungkus__gambar">
+                        <img src="img/photogue.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="About"></div>
         </section>
-    </main>
-    <div class="bola1"></div>
-    <div class="bola2"></div>
+    </div>
+    <div data-aos="fade-up" data-aos-duration="1000">
+        <section class="about">
+            <h3 class="judul">About Me</h3>
+            <p class="subjudul"><span class="span__p">I'm currently learning </span>to be a front end developer. I'm a beginner and a lifelong
+                learner. I'm not a professional, just an ordinary person who wants to learn to create something.</p>
+            <div class="about__bungkus">
+                <div class="skill__bungkus">
+                    <div class="bar__skill">
+                        <h2>My Skill</h2>
+                        <div class="bar">
+                            <div class="bar__info">
+                                <span>HTML</span>
+                            </div>
+                            <div class="proses__skill html">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar__info">
+                                <span>CSS</span>
+                            </div>
+                            <div class="proses__skill css">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar__info">
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="proses__skill JS">
+                                <span></span>
+                            </div>
+                        </div>
+                        <p>I'm joking</p>
+                    </div>
+                </div>
+                <div class="about__card">
+                    <div class="about__isi">
+                        <img src="img/bg.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div id="Project"></div>
+        </section>
+    </div>
+    <!-- Project -->
+    <div data-aos="fade-up" data-aos-duration="1000">
+        <section class="project">
+            <h3 class="judul">My Recent Project</h3>
+            <p class="subjudul"> <span class="span__p">Actually this is the only </span> project that I think is successful. Yeah... I just thought it
+                would be a shame to waste it you know.</p>
+            <div class="project__bungkus">
+                <div class="project__all">
+                    <div class="item">
+                        <div class="kiri">
+                            <div class="item__img">
+                                <img src="img/iwakcupang.png" alt="">
+                            </div>
+                        </div>
+                        <div class="kanan">
+                            <h2 class="judul__project">
+                                Iwak Cupang
+                            </h2>
+                            <p class="deskripsi__project">
+                                <span class="span__p">This project is actually </span>
+                                almost perfect, but there are too many mistakes in the image
+                                design. But at least, responsive enough. Well, not for the image.
+                            </p>
+                            <br>
+                            <div class="tombol__project">
+                                <a href="https://bimoarifw.github.io/Project/View/WebsiteV2/index.html"><button class="tombol__satu">Demo</button></a>
+                                <a href="https://github.com/bimoarifw/sebuahhasil/tree/main/WebsiteV2"><button class="tombol__satu">Source Code</button></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="kiri">
+                            <div class="item__img">
+                                <img src="img/linktree purple.png" alt="">
+                            </div>
+                        </div>
+                        <div class="kanan">
+                            <h2 class="judul__project">
+                                Bio Link
+                            </h2>
+                            <p class="deskripsi__project">
+                                <span class="span__p"> This is a kind of mini portfolio </span>
+                                that provides links to social media. Usually people
+                                call it linktree or biolink and something similar to them. I was inspired by the glass
+                                effect from one of the youtubers.
+                            </p>
+                            <br>
+                            <div class="tombol__project">
+                                <a href="https://bimoarifw.github.io/Project/View/BioLink_Purple/index.html"><button class="tombol__satu">Demo</button></a>
+                                <a href="https://github.com/bimoarifw/sebuahhasil/tree/main/BioLink%20Purple"><button class="tombol__satu">Source Code</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center ;">
+                <a href="https://bimoarifw.github.io/Project/index.html">
+                    <button class="tombol__satu">
+                        More Project
+                    </button>
+                </a>
+            </div>
+            <div id="Contact"></div>
+        </section>
+    </div>
+    <!--KONTAK -->
+    <div data-aos="fade-up" data-aos-duration="1000">
+        <section class="kontak">
+            <div class="bungkus__kontak">
+                <div class="kontak__card">
+                    <div class="card__bungkus">
+                        <div class="formulir kiri">
+                            <div class="judul__formulir">
+                                <span>CONTACT</span>
+                                <hr>
+                            </div>
+                            <p class="subjudul">Maybe I can help you if you want to give me support or advice that might
+                                help me increase my skills.</p>
+                            <div class="formulir__sosmed">
+                                <div class="sosmed__icon">
+                                    <p>Social Media</p>
+                                    <hr>
+                                    <!-- <a href="">
+                                        <i class="ri-facebook-circle-fill fb"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="ri-twitter-fill twt"></i>
+                                    </a> -->
+                                    <a href="https://www.instagram.com/bimoarifw/">
+                                        <i class="ri-instagram-fill IG"></i>
+                                    </a>
+                                    <a href="https://github.com/bimoarifw/">
+                                        <i class="ri-github-fill GH"></i>
+                                    </a>
+                                    <a href="https://www.behance.net/bimoarifw">
+                                        <i class="ri-behance-fill BH"></i>
+                                    </a>
+                                    <a href="https://wa.me/6282322981366">
+                                        <i class="ri-whatsapp-fill WA"></i>
+                                    </a>
+                                    <a href="https://codepen.io/bimoarifw/">
+                                        <i class="ri-codepen-fill CP"></i>
+                                    </a>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="formulir">
+                            <form action="https://formspree.io/f/mvoleodq" method="POST">
+                                <input type="text" name="name" class="isi__formulir" required placeholder="NAMA"
+                                    value="Bimo Arif Wibowo">
+                                <input type="email" name="email" class="isi__formulir" required placeholder="EMAIL">
+                                <div class="message">
+                                    <textarea name="message" class="pesan__formulir" required
+                                        placeholder="MESSAGE"></textarea>
+                                </div>
+                                <br>
+                                <div class="tombol__form">
+                                    <button type="submit" class="tombol__satu">Kirim</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <section class="footer">
+        <div class="footer__bungkus">
+            <div class="footer__teks">
+                <h2>BimoArifW</h2>
+                <p>I am a student who still needs a teacher to guide me to improve my skills. Besides learning to design
+                    a website, I also like to try new things. Maybe you guys can see my other projects in the side link.
+                    Yeahh, maybe for now it doesn't exist because I'm confused about which link to display
+                </p>
+            </div>
+            <ul>
+                <div class="link__bungkus">
+                    <p class="judul__link">Judul Link</p>
+                </div>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+            </ul>
+            <ul>
+                <div class="link__bungkus">
+                    <p class="judul__link">Judul Link</p>
+                </div>
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+            </ul>
+        </div>
+    </section>
+    <section class="copyright">
+        <div class="copyright__bungkus">
+            <hr>
+            <div class="copyright__teks">
+                <p>&copy; Copyright 2022. Bimo Arif W. All Rights Reserved</p>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
 
 </html>
