@@ -22,7 +22,7 @@
 
 
 body {
-    background-color: #eaeaea;
+    background-color: var(--primary-color);
 }
 
 section {
