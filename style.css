@@ -58,7 +58,7 @@ hr {
     font-size: 14px;
     border-radius: 1em;
     background-color: var(--primary-color);
-    box-shadow: 20px 20px 30px #bebebe;
+    box-shadow: 20px 20px 30px #b0e5ff;
     cursor: pointer;
 }
 
@@ -223,16 +223,13 @@ i.nav__icon {
 }
 
 .about__card {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     margin: 0 auto;
     z-index: 1;
 
 }
 
-.about__isi {
-    position: relative;
-}
 
 
 .skill__bungkus {
@@ -427,10 +424,6 @@ i.nav__icon {
 }
 
 /* KONTAK */
-
-.kontak {
-    min-height: 100vh;
-}
 
 .bungkus__kontak {
     margin: auto;
@@ -660,6 +653,11 @@ input {
     .card__bungkus {
         padding: 40px;
     }
+    .about__card {
+        width: 300px;
+        height: 300px;
+    
+    }
 
     .formulir.kiri {
         padding: 0;
@@ -704,6 +702,13 @@ input {
 
     .bar .proses__skill.JS span {
         width: 100%;
+    }
+
+    .about__card {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    
     }
 
 
