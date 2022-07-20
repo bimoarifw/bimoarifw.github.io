@@ -22,7 +22,7 @@
 
 
 body {
-    background-color: var(--primary-color);
+    background-color: #d1e7fa;
 }
 
 section {
@@ -33,9 +33,10 @@ header {
     position: fixed;
     width: 100%;
     /* height: 60px; */
-    border-radius: 0 0 1em 1em;
-    background: var(--primary-color);
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    /* border-radius: 0 0 1em 1em; */
+    background: rgba(208, 239, 255);
+    /* backdrop-filter: blur(2px); */
+    /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); */
     z-index: 999;
 }
 
@@ -83,13 +84,16 @@ hr {
     font-size: 18px;
     padding-bottom: 30px;
 }
+
 span {
     color: var(--secondary-color);
 }
+
 .span__p {
     color: var(--secondary-color);
     font-weight: bold;
 }
+
 /* Navigasi */
 
 nav {
@@ -107,11 +111,13 @@ nav {
     text-transform: uppercase;
     letter-spacing: .2em;
 }
+
 .nav__judul {
     font-weight: bold;
     color: var(--textA);
     transition: .5s;
 }
+
 .nav__icon {
     font-size: 1.5rem;
     color: var(--textA);
@@ -143,11 +149,12 @@ a.nav__link {
     transition: .5s;
 
 }
+
 .nav__judul:hover {
     color: var(--secondary-color);
 }
 
-.nav__isi a:hover:after{
+.nav__isi a:hover:after {
     opacity: 1;
 }
 
@@ -196,18 +203,12 @@ i.nav__icon {
     left: 0;
     height: 1px;
     width: 90px;
-    background-color:var(--secondary-color);
+    background-color: var(--secondary-color);
 }
 
 .jumbotron__konteks p {
     font-size: 18px;
     padding-bottom: 30px;
-}
-
-.bungkus__gambar img {
-    border-radius: 0 50% 0 50%;
-    transform: scale(.7);
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.8);
 }
 
 /* About */
@@ -225,10 +226,7 @@ i.nav__icon {
     width: 300px;
     height: 300px;
     margin: 0 auto;
-    background-color: var(--secondary-color);
-    border-radius: 0 50% 0 50%;
     z-index: 1;
-    box-shadow: 2px 2px 5px rgb(17, 103, 177);
 
 }
 
@@ -236,9 +234,6 @@ i.nav__icon {
     position: relative;
 }
 
-.about__isi img {
-    border-radius: 0 0 0 50%;
-}
 
 .skill__bungkus {
     display: flex;
@@ -259,10 +254,12 @@ i.nav__icon {
     text-transform: uppercase;
     letter-spacing: .1em;
 }
+
 .bar__skill p {
     text-align: right;
     font-size: 10px;
 }
+
 .bar__skill .bar {
     margin: 25px auto;
 }
@@ -372,7 +369,7 @@ i.nav__icon {
     background-color: var(--primary-color);
     padding: 2rem 2rem;
     border-radius: 1em;
-    box-shadow: 2px 4px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 2px 4px rgba(0, 0, 0, 0.3); */
     z-index: 2;
 }
 
@@ -388,7 +385,7 @@ i.nav__icon {
     overflow: hidden;
     width: auto;
     border-radius: 1em;
-    box-shadow: 2px 4px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 2px 4px rgba(0, 0, 0, 0.3); */
     position: relative;
     cursor: pointer;
 }
@@ -407,10 +404,12 @@ i.nav__icon {
 .deskripsi__project {
     margin-bottom: 10px;
 }
+
 .judul__project {
     text-transform: uppercase;
     letter-spacing: .1em;
 }
+
 /* .project .item .kiri .item__img::after {
     position: absolute;
     content: "";
@@ -478,27 +477,35 @@ i.nav__icon {
     text-align: center;
     font-size: 30px;
 }
-.sosmed__icon a{
+
+.sosmed__icon a {
     color: var(--textA);
 }
+
 .fb {
     color: #0000ff;
 }
+
 .twt {
     color: #00ACEE;
 }
+
 .IG {
     color: #3f729b;
 }
+
 .GH {
     color: #171515;
 }
+
 .WA {
     color: #25D366;
 }
+
 .BH {
     color: #053eff;
 }
+
 i:hover {
     color: var(--secondary-color);
 }
@@ -579,16 +586,19 @@ input {
     text-transform: uppercase;
     transition: .5s;
 }
+
 .footer__bungkus ul li:hover a {
     margin-left: 20px;
     font-weight: bold;
     color: var(--secondary-color);
 }
+
 .footer li {
     width: 100px;
 }
+
 .copyright {
-    padding-top: 20px;
+    padding: 20px 0px 80px 0px;
 }
 
 .copyright__teks {
@@ -622,8 +632,9 @@ input {
         align-items: center;
         justify-content: center;
         border-radius: 2em 2em 0 0;
-        background: var(--primary-color);
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        background: rgba(208, 239, 255, .8);
+        backdrop-filter: blur(4px);
+        /* box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
     }
 
     .nav {
@@ -633,7 +644,8 @@ input {
     i.nav__icon {
         display: block;
     }
-    .nav__isi a:hover:after{
+
+    .nav__isi a:hover:after {
         opacity: 0;
     }
 
@@ -672,6 +684,7 @@ input {
     section {
         padding-bottom: 50px;
     }
+
     .skill__bungkus {
         display: flex;
         justify-content: center;
@@ -746,9 +759,11 @@ input {
     .tombol__project {
         text-align: center;
     }
+
     .bar__skill {
         box-shadow: none;
     }
+
     .card__bungkus {
         flex-direction: column;
     }
@@ -762,15 +777,19 @@ input {
         align-items: center;
         justify-content: center;
     }
+
     .sosmed__icon p {
         font-size: 16px;
     }
+
     .formulir__sosmed {
         padding-bottom: 20px;
     }
+
     .kontak__card {
         box-shadow: none;
     }
+
     .tombol__form {
         text-align: center;
     }
