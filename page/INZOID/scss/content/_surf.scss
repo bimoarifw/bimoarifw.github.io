@@ -1,0 +1,12 @@
+.surf {
+    &__container {
+        gap: 2.5rem;
+        & svg {
+            order: 2;
+        }
+    }
+
+    &__data {
+        text-align: center;
+    }
+}

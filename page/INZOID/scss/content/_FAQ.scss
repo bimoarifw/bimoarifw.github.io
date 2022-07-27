@@ -1,0 +1,22 @@
+.FAQ {
+    justify-content: center;
+
+    
+    &__accordion {
+        margin: 0 auto;
+    }
+
+    &__container {
+        gap: 2.5rem;
+    }
+
+    &__data {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.accordion__header {
+    cursor: pointer;
+}

@@ -1,0 +1,11 @@
+.guide{
+    &__container{
+        gap: 2.5em;
+    }
+    &__title{
+        font-size: var(--h2Font);
+        color: var(--judulCol);
+        margin-bottom: var(--marbot);
+    }
+    
+}

@@ -1,0 +1,210 @@
+.word {
+    width: 15em;
+}
+
+button {
+    border: none;
+}
+
+/* From uiverse.io by @alexmaracinaru */
+.button1 {
+    position: relative;
+    margin: auto;
+    padding: 0.75rem 1.125rem;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.button1:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 2rem;
+    background: var(--light-color);
+    width: 2.8rem;
+    height: 2.8rem;
+    transition: all 0.3s ease;
+}
+
+.button1 span {
+    position: relative;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    color: var(--text-color);
+}
+
+.button1 svg {
+    position: relative;
+    top: 0;
+    margin-left: .6rem;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--text-color);
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+}
+
+.button1:hover:before {
+    width: 100%;
+    background: var(--light-color);
+}
+
+.button1:hover svg {
+    transform: translateX(0);
+}
+
+.button1:active {
+    transform: scale(0.95);
+}
+
+.button2 {
+    padding: .95rem;
+    background-color: transparent;
+    border: .05rem solid var(--primary-color);
+    border-radius: 1rem;
+    color: var(--text-color);
+    cursor: pointer;
+
+    &:hover {
+        border: .05rem solid var(--secondary-color);
+        color: var(--secondary-color);
+    }
+}
+
+.button3 {
+    padding: .5rem;
+    background-color: transparent;
+    border: .05rem solid var(--light-color);
+    border-radius: .3rem;
+    margin: .5rem;
+    color: var(--light-color);
+    cursor: pointer;
+
+    &:hover {
+        border: .05rem solid var(--primary-color);
+        color: var(--primary-color);
+    }
+}
+
+button[type=submit] {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__send {
+    width: 100%;
+    font-family: inherit;
+    font-size: .9rem;
+    background: var(--primary-color);
+    color: var(--light-color);
+    padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: .3rem;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.button__send span {
+    display: block;
+    margin-left: 0.3rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.button__send i {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.button__send:hover .icon__send {
+    animation: fly 0.6s ease-in-out infinite alternate;
+}
+
+.button__send:hover i {
+    transform: translateX(1.5rem) scale(1.1);
+}
+
+.button__send:hover span {
+    transform: translateY(5rem);
+}
+
+.button__send:active {
+    transform: scale(0.95);
+}
+
+@keyframes fly {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+
+/* From uiverse.io by @adamgiebl */
+.button4 {
+    background: var(--bg-col);
+    color: var(--primary-color);
+    font-family: inherit;
+    padding: 0.35em;
+    padding-left: 1.2em;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 0.3em;
+    border: 1px solid var(--light-color);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    height: 2.8em;
+    padding-right: 3.3em;
+    cursor: pointer;
+}
+
+.button4 .icon {
+    background-color: var(--primary-color);
+    margin-left: 1em;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2em;
+    width: 2.2em;
+    border-radius: 0.3rem;
+    right: 0.3em;
+    transition: all 0.3s;
+}
+
+.button4:hover .icon {
+    width: calc(100% - 0.6em);
+}
+
+.button4 .icon svg {
+    width: 1.1em;
+    transition: transform 0.3s;
+    color: #fff;
+}
+
+.button4:hover .icon svg {
+    transform: translateX(0.1em);
+}
+
+.button4:active .icon {
+    transform: scale(0.8);
+}

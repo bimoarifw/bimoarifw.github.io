@@ -1,0 +1,13 @@
+.home {
+    &__container {
+        row-gap: 3rem;
+    }
+    &__title {
+        font-size: var(--fontBesar);
+        font-weight: var(--fontTebal);
+        margin-bottom: var(--marbotSet2);
+    }
+    &__description {
+        margin-bottom: var(--marbot3);
+    }
+}

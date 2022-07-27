@@ -1,0 +1,30 @@
+.contact {
+    &__container{
+        background-color: var(--bungkusCol);
+        padding: .5rem .5rem;
+        border-radius: .3rem;
+    }
+}
+input {
+    border-radius: .5rem;
+    width: 100%;
+    height: auto;
+    outline: none;
+    border: 4px solid var(--bungkusCol);
+    padding: .5rem .5rem;
+}
+textarea {
+    max-height: 300px;
+    height: 200px;
+    border-radius: .5rem;
+    width: 100%;
+    outline: none;
+    border: 4px solid var(--bungkusCol);
+    padding: .5rem .5rem;
+    resize: none;
+}
+.submit {
+    background-color: var(--primaCol);
+    cursor: pointer;
+    color: var(--teksCol3);
+}

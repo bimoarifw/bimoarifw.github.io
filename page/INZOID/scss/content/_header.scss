@@ -1,0 +1,66 @@
+// Header
+.header {
+    width: 100%;
+    background-color: var(--bodyCol);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z2);
+    transition: .5s;
+}
+
+.nav {
+    height: calc(var(--tinggi) + 1rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__menu {
+        @media screen and (max-width: 768px) {
+            position: fixed;
+            background-color: var(--bodyCol);
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+            padding: 2.5rem 0;
+            width: 95%;
+            top: -100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            transition: .4s;
+            border-radius: .5rem;
+            z-index: var(--z2);
+
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 1rem;
+    }
+
+    &__logo {
+        color: var(--primaCol);
+        font-weight: var(--fontSetTebal);
+        letter-spacing: var(--spaceLet);
+        font-size: var(--h2Font);
+    }
+    &__link {
+        color: var(--judulCol);
+        font-weight: var(--fontSetTebal);
+    }
+
+    &__toogle i {
+        color: var(--judulCol);
+        font-weight: var(--fontSetTebal);
+        cursor: pointer;
+        font-size: 1.3rem;
+    }
+}
+
+// Show Menu
+
+.show-menu {
+    top: calc(var(--tinggi) + .5rem);
+}

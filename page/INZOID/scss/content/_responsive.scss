@@ -1,0 +1,162 @@
+/* For small devices */
+@media screen and (max-width: 360px) {
+    .svg__img {
+        width: 100%;
+    }
+
+    .section {
+        padding: 3.5rem 0 1rem;
+    }
+}
+
+/* For medium devices */
+@media screen and (min-width: 576px) {
+    .svg {
+        &__img {
+            width: 100%;
+        }
+
+        &__img2 {
+            width: 100%;
+        }
+    }
+
+    .section__title-center {
+        text-align: initial;
+    }
+
+    .home__container,
+    .about__container,
+    .footer__container,
+    .surf__container,
+    .guide__container, 
+    .FAQ__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service__container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .home__container,
+    .about__container {
+        align-items: center;
+    }
+
+    .about__data, .FAQ__data {
+        text-align: initial;
+    }
+
+    .surf__data {
+        text-align: left;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    body {
+        margin: 0;
+    }
+
+    .section {
+        padding: 2rem 0 2rem;
+    }
+
+    .nav {
+        height: calc(var(--tinggi) + 1.5em);
+
+        &__list {
+            flex-direction: row;
+            column-gap: 2.5em;
+        }
+
+        &__toogle {
+            display: block;
+            position: absolute;
+            top: -100%;
+        }
+
+        &__toogle i {
+            display: none;
+        }
+    }
+    .surf {
+        &__data {
+            order: 2;
+        }
+    }
+
+    #modal {
+        width: 50%;
+        bottom: 10rem;
+
+        &2,
+        &3 {
+
+            width: 50%;
+            bottom: 10rem;
+        }
+    }
+    
+}
+
+.home__container {
+    padding: 10rem 0 5rem;
+}
+
+// .footer {
+//     &.section {
+//         padding-bottom: 4rem;
+//     }
+// }
+
+
+/* For large devices */
+@media screen and (min-width: 968px) {
+
+    .svg__img {
+        width: 470px;
+    }
+
+    .about__container {
+        column-gap: 6rem;
+    }
+
+    .service__container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .footer {
+        &__container {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        &__social {
+            align-items: flex-start;
+
+            &-link {
+                font-size: 1.45rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home {
+        &__img {
+            width: 540px;
+        }
+
+        &__description {
+            padding-right: 5rem;
+        }
+    }
+
+    .footer__container {
+        column-gap: 3rem;
+    }
+}

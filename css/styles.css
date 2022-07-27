@@ -1,0 +1,680 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap");
+:root {
+  --hue: 281;
+  --sat: 58%;
+  --primary-color: hsl(var(--hue), var(--sat), 9%);
+  --primary-color-alt: hsl(var(--hue), var(--sat), 5%);
+  --secondary-color: hsl(var(--hue), var(--sat), 38%);
+  --dark-color: hsl(var(--hue), var(--sat), 2%);
+  --light-color: hsl(var(--hue), var(--sat), 80%);
+  --text-color: hsl(var(--hue), var(--sat), 1%);
+  --text-color-alt: hsl(var(--hue), var(--sat), 10%);
+  --bg-color: hsl(var(--hue), var(--sat), 93%);
+  --bg-color2: hsl(var(--hue), var(--sat), 88%);
+  --font-family: "Nunito Sans", sans-serif;
+  --h2-font: 1.25rem;
+  --big-font: 2rem;
+  --small-font: .75rem;
+  --normal-font: .9rem;
+  --letter-space: .1rem;
+  --semi-bold: 600;
+  --bold: 700;
+  --height: 2.5rem;
+}
+@media screen and (min-width: 968px) {
+  :root {
+    --h2-font: 1.75rem;
+    --big-font: 2.5rem;
+    --small-font: .8rem;
+    --normal-font: 1rem;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary-color);
+  line-height: 1.5rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: var(--font-normal);
+}
+
+section {
+  padding: 2rem 0 2rem;
+}
+
+.container {
+  max-width: 1024px;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: var(--h2-font);
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.copyright {
+  text-align: center;
+  padding: 1rem;
+}
+
+.word {
+  width: 15em;
+}
+
+button {
+  border: none;
+}
+
+/* From uiverse.io by @alexmaracinaru */
+.button1 {
+  position: relative;
+  margin: auto;
+  padding: 0.75rem 1.125rem;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.button1:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 2rem;
+  background: var(--light-color);
+  width: 2.8rem;
+  height: 2.8rem;
+  transition: all 0.3s ease;
+}
+
+.button1 span {
+  position: relative;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  color: var(--text-color);
+}
+
+.button1 svg {
+  position: relative;
+  top: 0;
+  margin-left: 0.6rem;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: var(--text-color);
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.button1:hover:before {
+  width: 100%;
+  background: var(--light-color);
+}
+
+.button1:hover svg {
+  transform: translateX(0);
+}
+
+.button1:active {
+  transform: scale(0.95);
+}
+
+.button2 {
+  padding: 0.95rem;
+  background-color: transparent;
+  border: 0.05rem solid var(--primary-color);
+  border-radius: 1rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.button2:hover {
+  border: 0.05rem solid var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.button3 {
+  padding: 0.5rem;
+  background-color: transparent;
+  border: 0.05rem solid var(--light-color);
+  border-radius: 0.3rem;
+  margin: 0.5rem;
+  color: var(--light-color);
+  cursor: pointer;
+}
+.button3:hover {
+  border: 0.05rem solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+button[type=submit] {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button__send {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9rem;
+  background: var(--primary-color);
+  color: var(--light-color);
+  padding: 0.5rem 0.8rem 0.5rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.button__send span {
+  display: block;
+  margin-left: 0.3rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.button__send i {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.button__send:hover .icon__send {
+  -webkit-animation: fly 0.6s ease-in-out infinite alternate;
+          animation: fly 0.6s ease-in-out infinite alternate;
+}
+
+.button__send:hover i {
+  transform: translateX(1.5rem) scale(1.1);
+}
+
+.button__send:hover span {
+  transform: translateY(5rem);
+}
+
+.button__send:active {
+  transform: scale(0.95);
+}
+
+@-webkit-keyframes fly {
+  from {
+    transform: translateY(0.1em);
+  }
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+
+@keyframes fly {
+  from {
+    transform: translateY(0.1em);
+  }
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+/* From uiverse.io by @adamgiebl */
+.button4 {
+  background: var(--bg-col);
+  color: var(--primary-color);
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.3em;
+  border: 1px solid var(--light-color);
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.button4 .icon {
+  background-color: var(--primary-color);
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.3rem;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.button4:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.button4 .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #fff;
+}
+
+.button4:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.button4:active .icon {
+  transform: scale(0.8);
+}
+
+header {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+h2.header__logo {
+  letter-spacing: var(--letter-space);
+  text-transform: uppercase;
+  font-weight: 1000;
+}
+
+.home__section {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10rem;
+  position: relative;
+}
+
+.home__container {
+  gap: 2rem;
+}
+
+.button__home .button2 {
+  margin-left: 1rem;
+}
+
+.subtitle__home h1 {
+  font-size: 2rem;
+  padding: 0.5rem 0 0.5rem 0;
+  letter-spacing: var(--letter-space);
+  text-transform: uppercase;
+}
+.subtitle__home h3 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-space);
+}
+.subtitle__home p {
+  font-size: 1.4rem;
+  padding: 1rem 0 1rem 0;
+  position: absolute;
+}
+
+@media screen and (min-width: 576px) {
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem;
+  }
+  .subtitle__container {
+    margin: auto;
+  }
+  .subtitle__home h1 {
+    font-size: 3rem;
+    line-height: 4rem;
+    padding: 1rem 0 1rem 0;
+  }
+  .subtitle__home h3 {
+    font-size: 1rem;
+  }
+  .subtitle__home p {
+    font-size: 1.4rem;
+  }
+}
+.project__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project__header {
+  text-align: center;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+}
+
+.project__header h3 {
+  font-size: 0.8rem;
+  letter-spacing: var(--letter-space);
+  text-transform: uppercase;
+}
+
+.project__filter {
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--light-color);
+  flex-wrap: wrap;
+  margin: 1.3rem 0 1.3rem 0;
+}
+.project__filter li {
+  margin: 0.9rem;
+  cursor: pointer;
+}
+.project__filter-active {
+  background-color: var(--light-color);
+  padding: 0.1rem 0.7rem;
+  border-radius: 0.3rem;
+}
+
+.project__img {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.img__container {
+  margin: 0.3rem;
+}
+
+.img__box {
+  transition: all 0.5s ease-in-out;
+}
+
+.project__box {
+  overflow: hidden;
+  border-radius: 0.3rem;
+  padding: 0.5rem 0.5rem 0.1rem 0.5rem;
+  border: 1px solid var(--light-color);
+  position: relative;
+}
+
+.project__box img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0.3rem;
+}
+
+.img__box:hover {
+  transform: scale(1.1);
+}
+
+.other__container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.other__container:hover .other__box:nth-child(1) {
+  transform: translateX(0rem);
+}
+.other__container:hover .other__box:nth-child(2) {
+  transform: translateX(0rem);
+}
+.other__container:hover .other__box:nth-child(3) {
+  transform: translateX(0rem);
+}
+.other__container .other__box {
+  position: relative;
+  width: 300px;
+  height: 130px;
+  background: var(--bg-color2);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+.other__container .other__box h3 {
+  transition: 0.5s ease-in-out;
+}
+.other__container .other__box:nth-child(1) {
+  transform: translateX(2rem);
+}
+.other__container .other__box:nth-child(2) {
+  transform: translateX(-2rem);
+}
+.other__container .other__box:nth-child(3) {
+  transform: translateX(2rem);
+}
+.other__container .other__box:hover::before {
+  width: 100%;
+}
+.other__container .other__box:hover {
+  color: var(--light-color);
+}
+.other__container .other__box:hover h3 {
+  color: var(--light-color);
+}
+.other__container .other__box::before {
+  content: "";
+  position: absolute;
+  width: 0.3rem;
+  height: 130px;
+  background: var(--primary-color);
+  transition: 0.5s ease-in-out;
+  border-radius: 0.3rem;
+}
+.other__container .other__box .other__content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.other__container .other__box .other__content .other__icon {
+  position: relative;
+  min-width: 50px;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+.other__container .other__box .other__text {
+  padding: 0.5rem;
+}
+
+.button__project {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+@media screen and (max-width: 375px) {
+  .other__container .other__box {
+    width: 200px;
+    height: 100px;
+  }
+  .other__container .other__box::before {
+    height: 100px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .project__img {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .other__container .other__box {
+    width: 400px;
+    height: 100px;
+  }
+  .other__container .other__box::before {
+    height: 100px;
+  }
+}
+@media screen and (min-width: 765px) {
+  .other__container .other__box {
+    width: 600px;
+    height: 100px;
+  }
+  .other__container .other__box::before {
+    height: 100px;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .project__section2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .other__container {
+    flex-direction: row;
+  }
+  .other__container .other__box {
+    width: 400px;
+    height: 150px;
+  }
+  .other__container .other__box::before {
+    height: 150px;
+  }
+  .other__container .other__box:nth-child(1) {
+    transform: none;
+  }
+  .other__container .other__box:nth-child(2) {
+    transform: none;
+  }
+  .other__container .other__box:nth-child(3) {
+    transform: none;
+  }
+}
+.contact__section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.left__header h2 {
+  line-height: 3rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-space);
+}
+
+.left__socmed {
+  font-size: 2rem;
+  display: flex;
+}
+.left__socmed .icon__socmed-gh {
+  margin: 0.3rem;
+  max-width: 2rem;
+  cursor: pointer;
+  color: #171515;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+.left__socmed .icon__socmed-gh:hover {
+  transform: rotate(0deg);
+}
+.left__socmed .icon__socmed-ig {
+  margin: 0.3rem;
+  max-width: 2rem;
+  cursor: pointer;
+  color: #3f729b;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+.left__socmed .icon__socmed-ig:hover {
+  transform: rotate(0deg);
+}
+.left__socmed .icon__socmed-cp {
+  margin: 0.3rem;
+  max-width: 2rem;
+  cursor: pointer;
+  color: #171515;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+.left__socmed .icon__socmed-cp:hover {
+  transform: rotate(0deg);
+}
+.left__socmed .icon__socmed-bh {
+  margin: 0.3rem;
+  max-width: 2rem;
+  cursor: pointer;
+  color: #053eff;
+  transform: rotate(45deg);
+  transition: all 0.5s ease-in-out;
+}
+.left__socmed .icon__socmed-bh:hover {
+  transform: rotate(0deg);
+}
+
+input, textarea {
+  border: none;
+  width: 100%;
+  background-color: var(--bg-color2);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  resize: none;
+  border-radius: 0.3rem;
+  outline: none;
+}
+
+.contact__submit {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  border: none;
+}
+
+@media screen and (min-width: 576px) {
+  .contact__container {
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid var(--light-color);
+    padding: 1rem;
+    border-radius: 0.3rem;
+  }
+}/*# sourceMappingURL=styles.css.map */

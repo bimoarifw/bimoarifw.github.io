@@ -1,0 +1,91 @@
+.contact__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.left__header h2{
+    line-height: 3rem;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-space);
+}
+.left__socmed {
+    font-size: 2rem;
+    display: flex;
+    & .icon__socmed{
+        &-gh{
+            margin: .3rem;
+            max-width: 2rem;
+            cursor: pointer;
+            color:  #171515;
+            transform: rotate(45deg);
+            transition: all .5s ease-in-out;
+            &:hover{
+                transform: rotate(0deg);
+            }
+        }
+        &-ig{
+            margin: .3rem;
+            max-width: 2rem;
+            cursor: pointer;
+            color: #3f729b;
+            transform: rotate(45deg);
+            transition: all .5s ease-in-out;
+            &:hover{
+                transform: rotate(0deg);
+            }
+        }
+        &-cp{
+            margin: .3rem;
+            max-width: 2rem;
+            cursor: pointer;
+            color: #171515;
+            transform: rotate(45deg);
+            transition: all .5s ease-in-out;
+            &:hover{
+                transform: rotate(0deg);
+            }
+        }
+        &-bh{
+            margin: .3rem;
+            max-width: 2rem;
+            cursor: pointer;
+            color: #053eff;
+            transform: rotate(45deg);
+            transition: all .5s ease-in-out;
+            &:hover{
+                transform: rotate(0deg);
+            }   
+        }
+    }
+}
+input,textarea {
+    border: none;
+    width: 100%;
+    background-color: var(--bg-color2);
+    padding: .5rem;
+    margin-bottom: .5rem;
+    resize: none;
+    border-radius: .3rem;
+    outline: none;
+}
+.contact__submit {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border-radius: .3rem;
+    padding: .5rem;
+    border: none;
+}
+
+@media screen and (min-width: 576px) {
+    .contact__container {
+        grid-template-columns: repeat(2, 1fr);
+        border: 1px solid var(--light-color);
+        padding: 1rem;
+        border-radius: .3rem;
+    }
+}

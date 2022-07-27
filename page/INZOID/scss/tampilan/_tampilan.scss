@@ -1,0 +1,40 @@
+/*=============== REUSABLE CSS CLASSES ===============*/
+.section {
+    padding: 4.5rem 0 2rem;
+
+    &__title,
+    &__title-center {
+        font-size: var(--h2Font);
+        color: var(--judulCol);
+        text-align: center;
+        margin-bottom: var(--marbot);
+    }
+}
+
+.svg {
+    &__img {
+        width: 300px;
+        height: 200px;
+        justify-self: center;
+    }
+    &__img2 {
+        width: 350px;
+        height: 350px;
+        justify-self: center;
+    }
+    &__black {
+        fill: var(--judulCol);
+    }
+}
+
+
+.container {
+    max-width: 968px;
+    margin-left: var(--marbot2);
+    margin-right: var(--marbot2);
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}

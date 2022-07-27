@@ -1,0 +1,36 @@
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+
+// Color
+:root {
+    // Hue Saturation Base
+    --hue: 281;
+    --sat: 58%;
+    // Body Base
+    --primary-color: hsl(var(--hue), var(--sat), 9%);
+    --primary-color-alt: hsl(var(--hue), var(--sat), 5%);
+    --secondary-color: hsl(var(--hue), var(--sat), 38%);
+    --dark-color: hsl(var(--hue), var(--sat), 2%);
+    --light-color: hsl(var(--hue), var(--sat), 80%);
+    --text-color: hsl(var(--hue), var(--sat), 1%);
+    --text-color-alt: hsl(var(--hue), var(--sat), 10%);
+    --bg-color: hsl(var(--hue), var(--sat), 93%);
+    --bg-color2: hsl(var(--hue), var(--sat), 88%);
+    // Typography
+    --font-family: 'Nunito Sans', sans-serif;
+    --h2-font: 1.25rem;
+    --big-font: 2rem;
+    --small-font: .75rem;
+    --normal-font: .9rem;
+    --letter-space: .1rem;
+    --semi-bold: 600;
+    --bold: 700;
+    --height: 2.5rem;
+    // Responsive Typography
+    @media screen and (min-width: 968px) {
+        --h2-font: 1.75rem;
+        --big-font: 2.5rem;
+        --small-font: .8rem;
+        --normal-font: 1rem;
+    }
+}

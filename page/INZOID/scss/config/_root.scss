@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --tinggi: 2.5rem;
+    // Color
+    --hue: 4;
+    --sat: 90%;
+    --primaCol: hsl(var(--hue), var(--sat), 45%);
+    --primaCol2: hsl(var(--hue), var(--sat), 60%);
+    --primaCol3: hsl(var(--hue), var(--sat), 55%);
+    --primaCol-span: hsl(var(--hue), var(--sat), 25%);
+    --judulCol: hsl(var(--hue), 4%, 15%);
+    --teksCol: hsl(var(--hue), 4%, 15%);
+    --teksCol2: hsl(var(--hue), 4%, 65%);
+    --teksCol3: hsl(var(--hue), 0%, 95%);
+    --bodyCol: hsl(var(--hue), 0%, 95%);
+    --bodyCol2: hsl(var(--hue), 0%, 70%);
+    --bungkusCol: hsl(var(--hue), 0%, 83%);
+    --bungkusCol2: hsl(var(--hue),var(--sat), 45%);
+    --secondCol: hsl(var(--hue), 4%, 8%);
+    --fontFams: 'Poppins', sans-serif;
+    --fontBesar: 2rem;
+    --h2Font: 1.25rem;
+    --h3Font: 1.129rem;
+    --fontNormal: .9rem;
+    --fontKecil: .8rem;
+    --fontKecil2: .75rem;
+    --spaceLet: .2rem;
+
+    @media screen and (min-width: 968px) {
+        --fontBesar: 2.5rem;
+        --h2Font: 1.75rem;
+        --h3Font: 1.3rem;
+        --fontNormal: 1rem;
+        --fontKecil: .88rem;
+        --fontKecil2: .840rem;
+    }
+
+    --fontSetTebal: 600;
+    --fontTebal: 700;
+    --marbotSet: .5rem;
+    --marbotSet2: .75rem;
+    --marbot: 1rem;
+    --marbot2: 1.5rem;
+    --marbot3: 2rem;
+    --z1: 10;
+    --z2: 100;
+
+}

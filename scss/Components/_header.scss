@@ -1,0 +1,14 @@
+header {
+    padding: 1.5rem;
+    width: 100%;
+    // position: fixed;
+    // z-index: 4;
+    // background: rgba(241, 227, 248, .5);
+    // backdrop-filter: blur(5px);
+}
+h2.header__logo {
+    letter-spacing: var(--letter-space);
+    text-transform: uppercase;
+    font-weight: 1000;
+}
+

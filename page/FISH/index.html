@@ -1,0 +1,183 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fish</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/bimoarifw/image/upload/v1658939290/bimoarifw__favicon.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <!-- Header -->
+
+    <header>
+        <div class="logo">
+            <a href="#">Iwak<span>Cupang</span></a>
+        </div>
+        <nav class="navbar" id="nav-menu">
+            <ion-icon name="close-outline" class="nav__close" id="close-menu"></ion-icon>
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="#awal">Home</a></li>
+                <li class="nav__item"><a class="nav__link" href="#tentang">About</a></li>
+                <li class="nav__item"><a class="nav__link" href="#variant">Variant</a></li>
+                <li class="nav__item"><a class="nav__link" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <ion-icon name="menu-outline" class="nav__toogle" id="toogle-menu"></ion-icon>
+    </header>
+
+    <!-- JUMBOTRON -->
+    <section class="awal" id="awal">
+        <div class="awal__text">
+            <h1>Iwak<span class="awal__text__span">Cupang</span></h1>
+            <h2>Membawa Keindahan <br> Pada Dirimu </h2>
+            <br>
+            <a href="#variant" class="tombol">Pesan</a>
+            <a href="#contact" class="tomboldua">Kontak</a>
+        </div>
+        <div class="awal__foto">
+            <img src="img/cupang.png" alt="cupang">
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="tentang" id="tentang">
+        <div class="tentang__img">
+            <img src="img/cupang about.png" alt="cupang">
+        </div>
+        <div class="tentang__text">
+            <span>Tentang Kami</span>
+            <h2>Iwak cupang kami<br>adalah yang terbaik.</h2>
+            <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, nobis pariatur modi repellat quos
+                debitis. Debitis veritatis eligendi qui rem. Facere quidem hic, atque eum quas vero labore in facilis.
+            </p>
+        </div>
+    </section>
+
+    <!-- VARIANT -->
+    <section class="variasi" id="variant">
+        <div class="variasi__head">
+            <span>Variasi</span>
+            <h2>Variasi iwak kami<br>adalah yang terbaik.</h2>
+        </div>
+        <div class="variasi__iwak">
+            <div class="kotak">
+                <div class="kotak__img">
+                    <img src="img/cupang1.png" alt="cupang">
+                </div>
+                <div class="kotak__teks">
+                    <h2>Iwak Cupang 1</h2>
+                    <h3>Cupang Keren</h3>
+                    <span>Rp 2000k</span>
+                </div>
+                <i class='bx bx-cart-alt'></i>
+            </div>
+
+            <div class="kotak">
+                <div class="kotak__img">
+                    <img src="img/cupang3.png" alt="cupang">
+                </div>
+                <div class="kotak__teks">
+                    <h2>Iwak Cupang 2</h2>
+                    <h3>Cupang Sangar</h3>
+                    <span>Rp 2000k</span>
+                </div>
+                <i class='bx bx-cart-alt'></i>
+            </div>
+
+            <div class="kotak">
+                <div class="kotak__img">
+                    <img src="img/cupang2.png" alt="cupang">
+                </div>
+                <div class="kotak__teks">
+                    <h2>Iwak Cupang 3</h2>
+                    <h3>Cupang Hebat</h3>
+                    <span>Rp 2000k</span>
+                </div>
+                <i class='bx bx-cart-alt'></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK -->
+
+    <section class="bayarkontak" id="contact">
+        <div class="kontak__head">
+            <h4>Kontak & Pembayaran</h4>
+            <h2>Anda bisa dengan mudah membayar iwak kami.</h2>
+        </div>
+        <div class="kontak">
+            <div class="kontak__sosmed">
+                <i class='bx bxl-facebook-circle'></i>
+                <i class='bx bxl-twitter'></i>
+                <i class='bx bxl-instagram'></i>
+                <i class='bx bxl-whatsapp'></i>
+            </div>
+            <div class="kontak__teks__tengah">
+                <h4>Silahkan Hubungi Kami</h4>
+            </div>
+            <div class=kontak__form">
+                <form>
+                    <label for="nama">Nama</label>
+                    <input type="text" id="nama" name="nama" required placeholder="Your name..">
+
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" required placeholder="Your last name..">
+
+                    <label for="iwak">Jenis Ikan</label>
+                    <select id="iwak" name="iwak">
+                        <option value="iwak1">Iwak 1</option>
+                        <option value="iwak2">Iwak 2</option>
+                        <option value="iwak3">Iwak 3</option>
+                    </select>
+                    <label for="bayar">Pembayaran</label>
+                    <select id="bayar" name="bayar">
+                        <option value="bayar1">Bank 1</option>
+                        <option value="bayar2">Bank 2</option>
+                        <option value="bayar3">Bank 3</option>
+                    </select>
+                    <input type="submit" value="Bayar">
+                </form>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <section class="footer">
+        <div class="footer__main">
+            <div class="footer__logo">
+                <i class='bx bx-game'></i>
+                <h1><span class="footer__span">Iwak</span> <br> Cupang</h1>
+                <br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores magnam dolorem similique. Omnis,
+                    provident quas.</p>
+            </div>
+            <div class="footer__link">
+                <ul>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                    <li><a href="#">Link 5</a></li>
+                    <li><a href="#">Link 6</a></li>
+                    <li><a href="#">Link 7</a></li>
+                    <li><a href="#">Link 8</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <div class="copyright">
+        <h4>Copyright 2022 <a href="#">IWAKCUPANG</a> Created by <i class='bx bx-cool'></i><a href="#"> BIMOARIFW</a>
+        </h4>
+    </div>
+</body>
+<script type="text/javascript" src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</html>
