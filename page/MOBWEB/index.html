@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Mobile Web</title>
+    <style>
+        .body {
+            font-family: Arial, sans-serif;
+            background-color: #2b2929;
+            margin: 0;
+            padding: 0;
+        }
+
+        .body.dark-mode {
+            background-color: #e6e1e1;
+        }
+
+        .container {
+            max-width: 320px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container.dark-mode {
+            background-color: #333;
+            color: #f0f0f0;
+        }
+
+        .container.dark-mode h2 {
+            color: #f0e68c;
+        }
+
+        .container.dark-mode p {
+            color: #fff;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 25px;
+            color: #333;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+
+        .container.dark-mode .logo-text {
+            color: #f0f0f0;
+        }
+
+        .dark-mode-switch {
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+            background-color: #666;
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dark-mode-switch:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: #fff;
+            transition: transform 0.3s;
+        }
+
+        .container.dark-mode .dark-mode-switch {
+            background-color: #999;
+        }
+
+        .container.dark-mode .dark-mode-switch:before {
+            transform: translateX(20px);
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .section {
+            margin-top: 20px;
+        }
+
+        .section h2 {
+            color: #0088cc;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size: 1.5em;
+            letter-spacing: .2em;
+            text-align: center;
+        }
+
+        .section p {
+            color: #666;
+            line-height: 20px;
+            text-align: justify;
+            letter-spacing: .5px;
+        }
+
+        .button-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0088cc;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s;
+            margin-right: 20px;
+        }
+
+        .container.dark-mode .button {
+            background-color: #444;
+        }
+
+        .button:last-child {
+            margin-right: 0;
+        }
+
+        .button i {
+            margin-right: 10px;
+        }
+
+        .button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s;
+        }
+
+        .button:hover:before {
+            left: 0;
+        }
+
+        .button:hover {
+            transform: translateX(10px);
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 5px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .jumbotron {
+            position: relative;
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slideshow img {
+            filter: blur(1px);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slideshow img.active {
+            opacity: 1;
+        }
+
+        .jumbotron-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.507);
+        }
+
+        .jumbotron-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            border-radius: 10px;
+            z-index: 1;
+            width: 90%;
+        }
+
+        .jumbotron-content h2 {
+            color: #85d6ff;
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .jumbotron-content p {
+            color: #fff;
+            font-size: 1em;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+        }
+
+        .slideshow {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%;
+        }
+
+        .slideshow img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        .slideshow img.active {
+            opacity: 1;
+        }
+
+        img[loading="lazy"] {
+            display: block;
+        }
+
+        .video-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%;
+            border-radius: 10px;
+            background-color: #000;
+        }
+
+        .youtube-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            pointer-events: none;
+            border-radius: 10px;
+            border: none;
+        }
+
+        .video-container.show-video .youtube-iframe {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .youtube-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .video-container.show-video .youtube-icon {
+            display: none;
+        }
+
+        .textmedia {
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .bodyavatar {
+            margin: 0;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .avatar {
+            --border-color: #0088cc;
+            /* Updated color */
+            --background-color: #0088cc;
+            /* Updated size */
+            --avatar-size: 150px;
+            /* Updated size */
+            height: var(--avatar-size);
+            width: var(--avatar-size);
+            border: 4px solid var(--border-color);
+            padding: 6px;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .avatar::before,
+        .avatar::after {
+            content: "";
+            position: absolute;
+            height: 6px;
+            width: 6px;
+            transform: rotate(45deg);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+
+        .avatar::before {
+            box-shadow: 0px 0px 0px transparent, 4.94975rem 4.94975rem #0088cc, 0rem 7rem #0088cc, -4.94975rem 4.94975rem #0088cc, -7rem 0rem #0088cc, -4.94975rem -4.94975rem #0088cc, 0rem -7rem #0088cc, 4.94975rem -4.94975rem #0088cc, 7rem 0rem #0088cc;
+            animation: animate-2 1s ease-in-out infinite;
+        }
+
+        .avatar::after {
+            box-shadow: 0px 0px 0px transparent, 5.54328rem 2.2961rem #0088cc, 4.24264rem 4.24264rem #0088cc, 2.2961rem 5.54328rem #0088cc, 0rem 6rem #0088cc, -2.2961rem 5.54328rem #0088cc, -4.24264rem 4.24264rem #0088cc, -5.54328rem 2.2961rem #0088cc, -6rem 0rem #0088cc, -5.54328rem -2.2961rem #0088cc, -4.24264rem -4.24264rem #0088cc, -2.2961rem -5.54328rem #0088cc, 0rem -6rem #0088cc, 2.2961rem -5.54328rem #0088cc, 4.24264rem -4.24264rem #0088cc, 5.54328rem -2.2961rem #0088cc, 6rem 0rem #0088cc;
+            transform: rotate(12deg);
+            animation: animate-1 1s ease-in-out infinite, animate-rotation 5s linear infinite;
+        }
+
+        .avatar img {
+            max-width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        @keyframes animate-rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes animate-1 {
+
+            0%,
+            100% {
+                box-shadow: 0px 0px 0px transparent, 5.54328rem 2.2961rem #0088cc, 4.24264rem 4.24264rem #0088cc, 2.2961rem 5.54328rem #0088cc, 0rem 6rem #0088cc, -2.2961rem 5.54328rem #0088cc, -4.24264rem 4.24264rem #0088cc, -5.54328rem 2.2961rem #0088cc, -6rem 0rem #0088cc, -5.54328rem -2.2961rem #0088cc, -4.24264rem -4.24264rem #0088cc, -2.2961rem -5.54328rem #0088cc, 0rem -6rem #0088cc, 2.2961rem -5.54328rem #0088cc, 4.24264rem -4.24264rem #0088cc, 5.54328rem -2.2961rem #0088cc, 6rem 0rem #0088cc;
+            }
+
+            50% {
+                box-shadow: 0px 0px 0px transparent, 5.08134rem 2.10476rem #0088cc, 3.88909rem 3.88909rem #0088cc, 2.10476rem 5.08134rem #0088cc, 0rem 5.5rem #0088cc, -2.10476rem 5.08134rem #0088cc, -3.88909rem 3.88909rem #0088cc, -5.08134rem 2.10476rem #0088cc, -5.5rem 0rem #0088cc, -5.08134rem -2.10476rem #0088cc, -3.88909rem -3.88909rem #0088cc, -2.10476rem -5.08134rem #0088cc, 0rem -5.5rem #0088cc, 2.10476rem -5.08134rem #0088cc, 3.88909rem -3.88909rem #0088cc, 5.08134rem -2.10476rem #0088cc, 5.5rem 0rem #0088cc;
+            }
+        }
+
+        @keyframes animate-2 {
+
+            0%,
+            100% {
+                box-shadow: 0px 0px 0px transparent, 3.88909rem 3.88909rem #0088cc, 0rem 5.5rem #0088cc, -3.88909rem 3.88909rem #0088cc, -5.5rem 0rem #0088cc, -3.88909rem -3.88909rem #0088cc, 0rem -5.5rem #0088cc, 3.88909rem -3.88909rem #0088cc, 5.5rem 0rem #0088cc;
+            }
+
+            50% {
+                box-shadow: 0px 0px 0px transparent, 4.24264rem 4.24264rem #0088cc, 0rem 6rem #0088cc, -4.24264rem 4.24264rem #0088cc, -6rem 0rem #0088cc, -4.24264rem -4.24264rem #0088cc, 0rem -6rem #0088cc, 4.24264rem -4.24264rem #0088cc, 6rem 0rem #0088cc;
+            }
+        }
+    </style>
+</head>
+
+<body class="body">
+    <div class="container dark-mode">
+        <div class="header">
+            <div class="logo">
+                <img src="https://cdn.thespike.gg/Teams%252010%2Fnewjeansfanclub_1675344164817.png" alt="Logo">
+                <span class="logo-text">MobWeb</span>
+            </div>
+            <div class="dark-mode-switch" onclick="toggleDarkMode()"></div>
+        </div>
+
+        <div class="jumbotron">
+            <div class="slideshow">
+                <img src="https://newjeans.kr/imgs/getup/photos/NJ_GetUp_23.jpg" alt="Jumbotron" class="active">
+                <img src="https://newjeans.kr/imgs/getup/photos/NJ_GetUp_24.jpg" alt="Jumbotron">
+                <img src="https://newjeans.kr/imgs/getup/photos/NJ_GetUp_25.jpg" alt="Jumbotron">
+            </div>
+            <div class="jumbotron-overlay"></div>
+            <div class="jumbotron-content">
+                <h2>WELCOME TO MY WEBSITE</h2>
+                <p>~ ZEEQRUX ~</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Site Overview</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam sint, deserunt saepe necessitatibus
+                ut iste quaerat voluptate, eius tempora incidunt ipsa itaque totam quae sunt nostrum nulla, rem eum
+                aspernatur!
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>NEW CONTENT</h2>
+            <div class="video-container" id="videoContainer">
+                <div class="youtube-icon">
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="textmediacontainer">
+            <hr>
+            <p class="textmedia">Videos and Photos Archive</p>
+            <hr>
+            <div class="button-section">
+                <a href="#" target=”_blank” class="button"><i class="fas fa-video"></i>Videos</a>
+                <a href="#" target=”_blank” class="button"><i class="fas fa-images"></i>Photos</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>About Me</h2>
+            <div class="bodyavatar">
+                <div class="avatar">
+                    <img src="https://pbs.twimg.com/profile_images/1664212525104369665/ovx-II0F_400x400.jpg" alt=""
+                        loading="lazy">
+                </div>
+            </div>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptate.</p>
+            <div class="button-section">
+                <a href="#" target=”_blank” class="button"><i class="fab fa-tiktok"></i>Tiktok</a>
+                <a href="#" target=”_blank” class="button"><i class="fab fa-twitter"></i>Twitter</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>My Hobby</h2>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa ut atque, provident voluptates
+                voluptatibus ab magni totam rem ipsa ex. Perferendis quod nobis similique repellendus temporibus nemo
+                eaque expedita sequi?
+            </p>
+        </div>
+
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/1080x1080/eee?text=1:1" alt="Gallery Image" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/1080x1080/eee?text=1:1" alt="Gallery Image" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/1080x1080/eee?text=1:1" alt="Gallery Image" loading="lazy">
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/1080x1080/eee?text=1:1" alt="Gallery Image" loading="lazy">
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <hr>
+            <p>
+                &copy; 2022 zeeqrux. All rights reserved.
+            </p>
+        </div>
+        <script>
+            function toggleDarkMode() {
+                const container = document.querySelector('.container');
+                container.classList.toggle('dark-mode');
+                const body = document.querySelector('.body');
+                body.classList.toggle('dark-mode');
+            }
+
+            function startSlideshow() {
+                let currentSlide = 0;
+                const slides = document.querySelectorAll('.slideshow img');
+                const slideCount = slides.length;
+
+                function showSlide(slideIndex) {
+                    slides.forEach((slide, index) => {
+                        slide.classList.toggle('active', index === slideIndex);
+                    });
+                }
+
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    showSlide(currentSlide);
+                }
+
+                showSlide(currentSlide);
+                setInterval(nextSlide, 5000);
+            }
+
+            startSlideshow();
+
+            const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+            lazyImages.forEach((lazyImage) => {
+                lazyImage.addEventListener('load', () => {
+                    lazyImage.removeAttribute('loading');
+                });
+            });
+
+            function loadVideo() {
+                const videoContainer = document.getElementById('videoContainer');
+                if (!videoContainer.classList.contains('show-video')) {
+                    videoContainer.classList.add('show-video');
+                    const youtubeIframe = document.createElement('iframe');
+                    youtubeIframe.classList.add('youtube-iframe');
+                    youtubeIframe.src = 'https://www.youtube.com/embed/dJdqn5v4Dkw?autoplay=1&controls=1&mute=0&enablejsapi=1';
+                    youtubeIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+                    youtubeIframe.allowFullscreen = true;
+                    videoContainer.appendChild(youtubeIframe);
+                }
+            }
+
+            const youtubeIcon = document.querySelector('.youtube-icon');
+            youtubeIcon.addEventListener('click', loadVideo);
+        </script>
+    </div>
+</body>
+
+</html>
