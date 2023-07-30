@@ -207,8 +207,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             z-index: 9999;
+            rotate: 90deg;
             /* Set a high z-index to ensure it appears on top of other elements */
+        }
+        #rotate-warning {
+            width: 80%;
         }
 
         /* Add the following CSS code */
@@ -484,7 +489,7 @@
             const storyContainer = document.getElementById('story-container');
             const startContainer = document.getElementById('start-container');
 
-            if (window.matchMedia("(orientation: portrait)").matches) {
+            if (window.matchMedia("(orientation: portrait)").matches || window.innerWidth < window.innerHeight) {
                 // Show the warning in portrait mode
                 rotateWarningContainer.style.display = 'flex';
                 storyContainer.style.display = 'none';
@@ -492,7 +497,7 @@
             } else {
                 // Show the content in landscape mode
                 rotateWarningContainer.style.display = 'none';
-                storyContainer.style.display = 'block';
+                storyContainer.style.display = 'block'; 
                 startContainer.style.display = 'block';
             }
         }
@@ -502,6 +507,7 @@
 
         // Listen for orientation changes and call checkOrientation
         window.addEventListener("orientationchange", checkOrientation);
+        window.addEventListener("resize", checkOrientation);
     </script>
 </body>
 
