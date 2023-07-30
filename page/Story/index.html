@@ -212,18 +212,23 @@
         }
 
         /* Add the following CSS code */
+
         @media screen and (orientation: portrait) {
             body {
                 background-image: none;
                 /* Remove the background image in portrait mode */
             }
 
-            .story-container {
-                display: none;
-            }
-
             #rotate-warning-container {
                 display: flex;
+            }
+
+            .full-container {
+                visibility: hidden;
+            }
+
+            .story-container {
+                visibility: visible;
             }
         }
 
@@ -232,46 +237,18 @@
                 display: none;
             }
 
-            .story-container {
-                display: block;
-            }
-        }
-
-
-        /* Responsive Styles */
-        @media screen and (min-width: 769px) {
-
-            .full-container,
-            .story-container {
-                display: block;
+            .full-container {
+                visibility: visible;
             }
 
-            #rotate-warning-container {
-                display: none;
+            .story-container {
+                visibility: hidden;
             }
         }
 
         /* For screens up to 768px width (small devices) */
         @media screen and (max-width: 768px) {
 
-            /* Hide the story container in mobile view since the content is rotated */
-            #story-container {
-                display: none;
-            }
-
-            .full-container,
-            .story-container {
-                display: none;
-            }
-
-            #rotate-warning-container {
-                display: flex;
-            }
-
-            /* Show the rotate warning message */
-            #rotate-warning-container {
-                display: flex;
-            }
 
             .full-overlay {
                 height: 100px;
