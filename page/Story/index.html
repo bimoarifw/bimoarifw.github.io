@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Telling Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .full-container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .full-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://dbjk47w5ep2rm.cloudfront.net/blog/wp-content/uploads/2015/03/grass-hands-moss-4627-825x550.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(5px);
+        }
+
+        .full-overlay {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.466);
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+
+        .full-overlay h1,
+        .full-overlay .start-button {
+            color: white;
+        }
+
+        .full-overlay .start-button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+
+
+        .story-container {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: none;
+            background-color: transparent;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            display: flex;
+            transition: transform 0.4s ease;
+        }
+
+        .slide {
+            width: 100%;
+            /* Set slide container width to cover viewport */
+            height: 100vh;
+            /* Set slide container height to cover viewport */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+            width: 100%;
+            height: 20%;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            text-align: left;
+            backdrop-filter: blur(5px);
+            /* Apply blur effect to the container background */
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-content p {
+            margin: 0;
+            padding: 10px;
+            line-height: 22px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            display: none;
+            /* Hide the audio controls */
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .next-button {
+            margin-right: 20px;
+        }
+
+        .next-button,
+        .prev-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: transparent;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .next-button:hover,
+        .prev-button:hover {
+            transform: translateX(10px);
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .fade-out {
+            animation: fadeOutAnimation 1s ease-in-out;
+        }
+
+        @keyframes fadeOutAnimation {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+                visibility: hidden;
+                /* Add this line to hide the container after the animation */
+            }
+        }
+
+        /* Responsive Styles */
+        /* For screens up to 768px width (small devices) */
+        @media screen and (max-width: 768px) {
+
+            /* Hide the story container in mobile view since the content is rotated */
+            #story-container {
+                display: none;
+            }
+
+            /* Show the rotate warning message */
+            #rotate-warning {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-90deg);
+                font-size: 24px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 10px;
+                border-radius: 5px;
+                z-index: 9999;
+            }
+
+            .full-overlay {
+                height: 100px;
+            }
+
+            .full-overlay h1 {
+                font-size: 18px;
+            }
+
+            .slide-content {
+                flex-direction: column;
+                /* Stack slide content vertically */
+                align-items: flex-start;
+                /* Align content to the left */
+            }
+
+            .slide-content p {
+                margin-bottom: 10px;
+                /* Add spacing between slide text and buttons */
+            }
+
+            .button-group {
+                display: flex;
+                /* Display buttons in a row */
+                flex-direction: row;
+                /* Align buttons horizontally */
+                justify-content: flex-end;
+                /* Move buttons to the right */
+                width: 100%;
+                /* Set button-group width to 100% */
+            }
+
+            .next-button,
+            .prev-button,
+            .start-again-button {
+                flex-grow: 1;
+                /* Make buttons take available width */
+            }
+
+            /* Add margin between buttons */
+            .next-button {
+                margin-right: 10px;
+            }
+
+            /* Style the Start Again button in mobile view */
+            .start-again-button {
+                margin-right: 0;
+            }
+        }
+
+        .start-again-button {
+            background-color: #28a745;
+            /* Green background color for "Start Again" button */
+            color: #fff;
+            /* White text color */
+            padding: 10px;
+            margin-right: 40px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .start-again-button:hover {
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full-container" id="start-container">
+        <div class="full-background"></div>
+        <div class="full-overlay">
+            <h1>Story Title</h1>
+            <button class="start-button" id="start-btn">Start</button>
+        </div>
+    </div>
+
+
+    <div class="story-container" id="story-container">
+        <div class="slider">
+            <div class="slide-container">
+                <!-- Slide content will be dynamically generated here -->
+            </div>
+        </div>
+    </div>
+    <!-- Add the following <div> after the closing tag of the story-container div -->
+    <div id="rotate-warning">Please rotate your device to view the content</div>
+
+
+    <!-- Add the Font Awesome CSS link to your document -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <audio id="background-music" controls loop style="display: none;" controlsList="nodownload">
+        <source src="audio/audio1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="click-sound" preload="auto" style="display: none;" controlsList="nodownload">
+        <source src="audio/click.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    <!-- ... Existing HTML code ... -->
+    <script>
+        const slidesData = [
+            {
+                image: 'images/image1.jpg',
+                audio: 'voice/story1.mp3',
+                text: 'Once upon a time...',
+            },
+            {
+                image: 'images/image3.jpg',
+                audio: 'voice/story3.mp3',
+                text: 'Sasuke is pregnant.',
+            },
+            {
+                image: 'images/image2.jpg',
+                audio: 'voice/story2.mp3',
+                text: 'And they......... lived happily ever after.',
+            },
+            // Add more slide objects with image, audio, and text as needed
+        ];
+
+        const startContainer = document.getElementById('start-container');
+        const storyContainer = document.getElementById('story-container');
+        const startBtn = document.getElementById('start-btn');
+        const slideContainer = document.querySelector('.slide-container');
+        const backgroundMusic = document.getElementById('background-music');
+        let currentSlideIndex = 0;
+
+        function showSlide(index) {
+            const slide = slidesData[index];
+            const slideHTML = `
+                <div class="slide">
+                    <img src="${slide.image}" alt="Slide Image">
+                    <div class="slide-content">
+                        <p id="typewriter">${slide.text}</p>
+                        <div class="button-group">
+                            ${index > 0 ? '<button class="prev-button" id="prev-btn"><i class="fa fa-arrow-left"></i> Prev</button>' : ''}
+                            ${index === slidesData.length - 1 ? '<button class="start-again-button" id="start-again-btn"><i class="fa fa-redo"></i></button>' : '<button class="next-button" id="next-btn">Next <i class="fa fa-arrow-right"></i></button>'}
+                        </div>
+                    </div>
+                    <audio controls autoplay controlsList="nodownload">
+                        <source src="${slide.audio}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            `;
+            slideContainer.innerHTML = slideHTML;
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const startAgainBtn = document.getElementById('start-again-btn');
+            prevBtn?.addEventListener('click', prevSlide);
+            nextBtn?.addEventListener('click', nextSlide);
+            startAgainBtn?.addEventListener('click', startAgain);
+
+            // Call the typewriter function
+            typewriter();
+        }
+
+        function typewriter() {
+            const textElement = document.getElementById('typewriter');
+            const text = textElement.innerHTML;
+            textElement.innerHTML = ''; // Clear the text
+
+            let charIndex = 0;
+            const typeInterval = 50; // Milliseconds between each character
+            const typing = setInterval(() => {
+                textElement.innerHTML += text[charIndex];
+                charIndex++;
+                if (charIndex === text.length) {
+                    clearInterval(typing);
+                }
+            }, typeInterval);
+        }
+
+        function playClickSound() {
+            const clickSound = document.getElementById('click-sound');
+            clickSound.currentTime = 0; // Reset the audio to the beginning
+            clickSound.play();
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + slidesData.length) % slidesData.length;
+            playClickSound(); // Play the click sound
+            showSlide(currentSlideIndex);
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slidesData.length;
+            playClickSound(); // Play the click sound
+
+            if (currentSlideIndex === slidesData.length - 1) {
+                // If it's the last slide, show the "Start Again" button
+                showSlide(currentSlideIndex);
+            } else {
+                // Otherwise, show the next slide
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function startAgain() {
+            location.reload(); // Reload the webpage to start again
+        }
+
+        function enterFullscreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                /* Chrome, Safari & Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        startBtn.addEventListener('click', () => {
+            enterFullscreen();
+            startContainer.classList.add('fade-out'); // Add the fade-out class to trigger the animation
+            setTimeout(() => {
+                startContainer.style.display = 'none'; // Hide the start container after the animation
+                startContainer.classList.remove('fade-out'); // Remove the fade-out class to reset opacity
+            }, 1000); // Adjust the delay to match the animation duration (1 second in this case)
+            storyContainer.style.display = 'block';
+
+            // Show the first slide initially
+            showSlide(currentSlideIndex);
+
+            // Play the background music
+            backgroundMusic.play();
+        });
+        function checkOrientation() {
+            if (window.matchMedia("(orientation: portrait)").matches) {
+                // Device is in portrait mode, hide the content and show the rotate warning
+                document.getElementById('rotate-warning').style.display = 'block';
+                document.getElementById('story-container').style.display = 'none';
+                document.getElementById('start-container').style.display = 'none';
+            } else {
+                // Device is in landscape mode, show the content
+                document.getElementById('rotate-warning').style.display = 'none';
+                document.getElementById('story-container').style.display = 'block';
+                document.getElementById('start-container').style.display = 'block';
+            }
+        }
+
+        // Call the checkOrientation function when the page loads and on orientation change
+        window.addEventListener("DOMContentLoaded", checkOrientation);
+        window.addEventListener("orientationchange", checkOrientation);
+
+    </script>
+</body>
+
+</html>
