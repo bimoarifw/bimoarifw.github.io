@@ -223,12 +223,9 @@
                 display: flex;
             }
 
-            .full-container {
-                visibility: hidden;
-            }
-
+            .full-container,
             .story-container {
-                visibility: visible;
+                display: none;
             }
         }
 
@@ -237,12 +234,9 @@
                 display: none;
             }
 
-            .full-container {
-                visibility: visible;
-            }
-
+            .full-container,
             .story-container {
-                visibility: hidden;
+                display: block;
             }
         }
 
@@ -486,20 +480,27 @@
             backgroundMusic.play();
         });
         function checkOrientation() {
+            const rotateWarningContainer = document.getElementById('rotate-warning-container');
+            const storyContainer = document.getElementById('story-container');
+            const startContainer = document.getElementById('start-container');
+
             if (window.matchMedia("(orientation: portrait)").matches) {
                 // Show the warning in portrait mode
-                document.getElementById('rotate-warning').style.display = 'block';
-                document.getElementById('story-container').style.display = 'none';
-                document.getElementById('start-container').style.display = 'none';
+                rotateWarningContainer.style.display = 'flex';
+                storyContainer.style.display = 'none';
+                startContainer.style.display = 'none';
             } else {
                 // Show the content in landscape mode
-                document.getElementById('rotate-warning').style.display = 'none';
-                document.getElementById('story-container').style.display = 'block';
-                document.getElementById('start-container').style.display = 'block';
+                rotateWarningContainer.style.display = 'none';
+                storyContainer.style.display = 'block';
+                startContainer.style.display = 'block';
             }
         }
 
-        window.addEventListener("DOMContentLoaded", checkOrientation);
+        // Call checkOrientation on page load
+        checkOrientation();
+
+        // Listen for orientation changes and call checkOrientation
         window.addEventListener("orientationchange", checkOrientation);
     </script>
 </body>
