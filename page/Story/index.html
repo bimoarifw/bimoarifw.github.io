@@ -212,6 +212,7 @@
             rotate: 90deg;
             /* Set a high z-index to ensure it appears on top of other elements */
         }
+
         #rotate-warning {
             width: 80%;
         }
@@ -242,59 +243,6 @@
             .full-container,
             .story-container {
                 display: block;
-            }
-        }
-
-        /* For screens up to 768px width (small devices) */
-        @media screen and (max-width: 768px) {
-
-
-            .full-overlay {
-                height: 100px;
-            }
-
-            .full-overlay h1 {
-                font-size: 18px;
-            }
-
-            .slide-content {
-                flex-direction: column;
-                /* Stack slide content vertically */
-                align-items: flex-start;
-                /* Align content to the left */
-            }
-
-            .slide-content p {
-                margin-bottom: 10px;
-                /* Add spacing between slide text and buttons */
-            }
-
-            .button-group {
-                display: flex;
-                /* Display buttons in a row */
-                flex-direction: row;
-                /* Align buttons horizontally */
-                justify-content: flex-end;
-                /* Move buttons to the right */
-                width: 100%;
-                /* Set button-group width to 100% */
-            }
-
-            .next-button,
-            .prev-button,
-            .start-again-button {
-                flex-grow: 1;
-                /* Make buttons take available width */
-            }
-
-            /* Add margin between buttons */
-            .next-button {
-                margin-right: 10px;
-            }
-
-            /* Style the Start Again button in mobile view */
-            .start-again-button {
-                margin-right: 0;
             }
         }
 
@@ -497,7 +445,7 @@
             } else {
                 // Show the content in landscape mode
                 rotateWarningContainer.style.display = 'none';
-                storyContainer.style.display = 'block'; 
+                storyContainer.style.display = 'block';
                 startContainer.style.display = 'block';
             }
         }
