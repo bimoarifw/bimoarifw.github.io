@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Story Telling Website</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000
+        }
+
+        .full-container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center
+        }
+
+        .full-container .copyright {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: #fff;
+            font-size: 12px
+        }
+
+        .full-overlay p {
+            color: #fff;
+            font-size: .8em;
+            font-style: italic
+        }
+
+        .full-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(images/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            filter: blur(5px)
+        }
+
+        .full-overlay {
+            text-align: center;
+            background-color: rgba(55, 27, 88, .5);
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .full-overlay .start-button,
+        .full-overlay h1 {
+            color: #ccc
+        }
+
+        .full-overlay h1 {
+            font-size: 1.5em
+        }
+
+        .start-button {
+            position: relative;
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #371b58;
+            color: #7858a6;
+            border: 2px solid #7858a6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: transform .3s ease
+        }
+
+        .start-button:hover {
+            transform: scale(1.1)
+        }
+
+        .start-button i {
+            color: #000;
+            animation: scale 1s linear infinite
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1)
+            }
+
+            25% {
+                transform: scale(1.1)
+            }
+
+            50% {
+                transform: scale(1.2);
+                color: #fff
+            }
+
+            75% {
+                transform: scale(1.1)
+            }
+
+            100% {
+                transform: scale(1)
+            }
+        }
+
+        .story-container {
+            width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: none;
+            background-color: transparent;
+            box-shadow: 0 2px 6px rgba(55, 27, 88, .5);
+            overflow: hidden
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden
+        }
+
+        .slide-container {
+            display: flex;
+            transition: transform .4s ease
+        }
+
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;
+            position: relative
+        }
+
+        .image-credit {
+            background-color: rgba(55, 27, 88, .5);
+            padding: 10px;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 45%;
+            right: 10px;
+            color: #fff;
+            font-size: 12px
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+            width: 100%;
+            height: 20%;
+            background-color: rgba(55, 27, 88, .5);
+            color: #fff;
+            text-align: left;
+            backdrop-filter: blur(5px);
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .slide-content p {
+            margin: 0;
+            padding: 10px;
+            line-height: 22px
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            display: none
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px
+        }
+
+        .next-button {
+            margin-right: 20px
+        }
+
+        .next-button,
+        .prev-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: transparent;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: transform .3s ease
+        }
+
+        .next-button:hover,
+        .prev-button:hover {
+            transform: translateX(10px)
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 1s ease-in-out
+        }
+
+        .fade-out {
+            animation: fadeOutAnimation 1s ease-in-out
+        }
+
+        @keyframes fadeOutAnimation {
+            from {
+                opacity: 1
+            }
+
+            to {
+                opacity: 0;
+                visibility: hidden
+            }
+        }
+
+        #rotate-warning-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .8);
+            color: #fff;
+            font-size: 1.3em;
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 40px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 9999
+        }
+
+        #rotate-warning {
+            width: 80%
+        }
+
+        .phone {
+            height: 50px;
+            width: 100px;
+            border: 3px solid #fff;
+            border-radius: 10px;
+            animation: rotate 1.5s ease-in-out infinite alternate
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0)
+            }
+
+            50% {
+                transform: rotate(-90deg)
+            }
+
+            100% {
+                transform: rotate(-90deg)
+            }
+        }
+
+        @media screen and (orientation:portrait) {
+            body {
+                background-image: none
+            }
+
+            #rotate-warning-container {
+                display: flex
+            }
+
+            .full-container,
+            .story-container {
+                display: none
+            }
+        }
+
+        @media screen and (orientation:landscape) {
+            #rotate-warning-container {
+                display: none
+            }
+
+            .full-container,
+            .story-container {
+                display: block
+            }
+        }
+
+        .start-again-button {
+            background-color: #816797;
+            color: #fff;
+            padding: 10px;
+            margin-right: 40px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform .3s ease
+        }
+
+        .start-again-button:hover {
+            transform: translateX(10px)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="full-container" id="start-container">
+        <div class="full-background"></div>
+        <div class="full-overlay">
+            <h1>"The Tale of Aria and Eridor"</h1>
+            <p>Aria, master of darkness, and enigmatic Eridor break an ancient curse with lost light. They conquer
+                malevolence, banishing darkness and becoming revered guardians of hope.</p><button class="start-button"
+                id="start-btn"><i class="fas fa-play"></i></button>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023. Bimo Arif W.</p>
+        </div>
+    </div>
+    <div class="story-container" id="story-container">
+        <div class="slider">
+            <div class="slide-container"></div>
+        </div>
+    </div>
+    <div id="rotate-warning-container">
+        <div id="rotate-warning">Please rotate your device to view the content</div>
+        <div class="phone"></div>
+    </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><audio
+        id="background-music" controls loop style="display:none" controlslist="nodownload">
+        <source src="audio/audio1.mp3" type="audio/mpeg">Your browser does not support the audio element.
+    </audio><audio id="click-sound" preload="auto" style="display:none" controlslist="nodownload">
+        <source src="audio/click.wav" type="audio/wav">Your browser does not support the audio element.
+    </audio>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+    <script>const slidesData = [
+            {
+                image: 'images/image1.jpg',
+                audio: 'voice/story1.mp3',
+                text: 'In a world where darkness reigns, an ancient curse envelops the land in eternal twilight.',
+                imageCredit: 'Photo by Arondight Studios',
+            },
+            {
+                image: 'images/image2.jpg',
+                audio: 'voice/story2.mp3',
+                text: 'Creatures of malevolence roamed freely, and the people lived in fear, their hearts weighed down by the ominous presence that surrounded them..',
+                imageCredit: '',
+            },
+            {
+                image: 'images/image3.jpg',
+                audio: 'voice/story3.mp3',
+                text: 'In the heart of this cursed realm, a young orphan named Aria grew up amidst the shadows. She possessed an unusual gift – the ability to control and manipulate darkness itself.',
+                imageCredit: '',
+            },
+            {
+                image: 'images/image4.jpg',
+                audio: 'voice/story4.mp3',
+                text: 'But Aria had never known the warmth of the sun or the light of day, for her powers had caused others to fear and reject her.',
+                imageCredit: 'Photo by Helga-Helleborus',
+            },
+            {
+                image: 'images/image5.jpg',
+                audio: 'voice/story5.mp3',
+                text: 'One fateful night, an enigmatic figure named Eridor arrived in the village. He was a traveler rumored to hold the key to breaking the ancient curse.',
+                imageCredit: 'Photo by alexiuss',
+            },
+            {
+                image: 'images/image6.jpg',
+                audio: 'voice/story6.mp3',
+                text: 'Despite the villagers skepticism, Aria sensed an inexplicable connection to Eridor and offered to aid him on his quest.',
+                imageCredit: 'Photo by ForeverAutumnStudio',
+            },
+            {
+                image: 'images/image7.jpg',
+                audio: 'voice/story7.mp3',
+                text: 'Eridor revealed the curse\'s solution: three mystical artifacts holding lost light. Aria vowed to help.',
+                imageCredit: 'Photo by Ruavell',
+            },
+            {
+                image: 'images/image8.jpg',
+                audio: 'voice/story8.mp3',
+                text: 'Their perilous journey tested trust and Aria\'s control over darkness.',
+                imageCredit: 'Photo by TMiracle',
+            },
+            {
+                image: 'images/image9.jpg',
+                audio: 'voice/story9.mp3',
+                text: 'With Eridor\'s guidance, she embraced her uniqueness and protected those she cared for.',
+                imageCredit: 'Photo by Teosmatt',
+            },
+            {
+                image: 'images/image10.jpg',
+                audio: 'voice/story10.mp3',
+                text: 'Each artifact strengthened her control, and they confronted the darkness-born guardian.',
+                imageCredit: 'Photo by Zurluk',
+            },
+            {
+                image: 'images/image11.jpg',
+                audio: 'voice/story11.mp3',
+                text: 'Aria and Eridor\'s combined power broke the curse, bathing the realm in sunrise.',
+                imageCredit: 'Photo by x-Celebril-x',
+            },
+            {
+                image: 'images/image12.jpg',
+                audio: 'voice/story12.mp3',
+                text: 'They returned as heroes, inspiring hope and becoming guardians of balance.',
+                imageCredit: 'Photo by Elizanel',
+            },
+            {
+                image: 'images/image13.jpg',
+                audio: 'voice/story13.mp3',
+                text: 'Aria\'s tale lived on, showing darkness could be wielded for good.',
+                imageCredit: 'Photo by obereg',
+            },
+            {
+                image: 'images/image14.jpg',
+                audio: '',
+                text: 'The End.',
+                imageCredit: 'Photo by JJcanvas',
+            },
+            // Add more slide objects with image, audio, and text as needed
+        ];
+
+        const startContainer = document.getElementById('start-container');
+        const storyContainer = document.getElementById('story-container');
+        const startBtn = document.getElementById('start-btn');
+        const slideContainer = document.querySelector('.slide-container');
+        const backgroundMusic = document.getElementById('background-music');
+        backgroundMusic.volume = 0.2;
+        let currentSlideIndex = 0;
+        const clickSound = new Audio();
+        clickSound.volume = 0.2;
+
+
+
+        function showSlide(index) {
+            const slide = slidesData[index];
+            const slideHTML = `
+                <div class="slide">
+                    <p class="image-credit">${slide.imageCredit}</p>
+                    <img src="${slide.image}" alt="Slide Image">
+                    <div class="slide-content">
+                        <p id="typewriter">${slide.text}</p>
+                        <div class="button-group">
+                            ${index > 0 ? '<button class="prev-button" id="prev-btn"><i class="fa fa-arrow-left"></i> Prev</button>' : ''}
+                            ${index === slidesData.length - 1 ? '<button class="start-again-button" id="start-again-btn"><i class="fa fa-redo"></i></button>' : '<button class="next-button" id="next-btn">Next <i class="fa fa-arrow-right"></i></button>'}
+                        </div>
+                    </div>
+                    <audio controls autoplay controlsList="nodownload">
+                        <source src="${slide.audio}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            `;
+            slideContainer.innerHTML = slideHTML;
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const startAgainBtn = document.getElementById('start-again-btn');
+            prevBtn?.addEventListener('click', prevSlide);
+            nextBtn?.addEventListener('click', nextSlide);
+            startAgainBtn?.addEventListener('click', startAgain);
+
+            // Call the typewriter function
+            typewriter();
+        }
+
+        function typewriter() {
+            const textElement = document.getElementById('typewriter');
+            const text = textElement.innerHTML;
+            textElement.innerHTML = ''; // Clear the text
+
+            let charIndex = 0;
+            const typeInterval = 50; // Milliseconds between each character
+            const typing = setInterval(() => {
+                textElement.innerHTML += text[charIndex];
+                charIndex++;
+                if (charIndex === text.length) {
+                    clearInterval(typing);
+                }
+            }, typeInterval);
+        }
+
+        function playClickSound() {
+            const clickSound = document.getElementById('click-sound');
+            clickSound.currentTime = 0; // Reset the audio to the beginning
+            clickSound.play();
+            clickSound.volume = 0.2;
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + slidesData.length) % slidesData.length;
+            playClickSound(); // Play the click sound
+            showSlide(currentSlideIndex);
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slidesData.length;
+            playClickSound(); // Play the click sound
+
+            if (currentSlideIndex === slidesData.length - 1) {
+                // If it's the last slide, show the "Start Again" button
+                showSlide(currentSlideIndex);
+            } else {
+                // Otherwise, show the next slide
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function startAgain() {
+            location.reload(); // Reload the webpage to start again
+        }
+
+        function enterFullscreen() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) {
+                /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) {
+                /* Chrome, Safari & Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function lazyLoadImages() {
+            const slideImages = document.querySelectorAll('.slide img');
+
+            slideImages.forEach(img => {
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const lazyImg = entry.target;
+                            lazyImg.src = lazyImg.dataset.src;
+                            observer.unobserve(lazyImg);
+                        }
+                    });
+                });
+
+                observer.observe(img);
+            });
+        }
+
+        function preloadMedia() {
+            // Preload images
+            slidesData.forEach(slide => {
+                const image = new Image();
+                image.src = slide.image;
+            });
+
+            // Preload audio
+            const audioSources = slidesData.map(slide => slide.audio).filter(audio => audio);
+            audioSources.forEach(audioSrc => {
+                const audio = new Audio();
+                audio.src = audioSrc;
+            });
+
+            // Preload click sound
+            clickSound.src = 'audio/click.wav';
+        }
+        startBtn.addEventListener('click', () => {
+            enterFullscreen();
+            startContainer.classList.add('fade-out'); // Add the fade-out class to trigger the animation
+            setTimeout(() => {
+                startContainer.style.display = 'none'; // Hide the start container after the animation
+                // Hide the full container when the Start Button is clicked
+                document.querySelector('.full-container').style.display = 'none';
+                startContainer.classList.remove('fade-out'); // Remove the fade-out class to reset opacity
+            }, 1000); // Adjust the delay to match the animation duration (1 second in this case)
+            storyContainer.style.display = 'block';
+
+            // Show the first slide initially
+            showSlide(currentSlideIndex);
+
+            // Play the background music
+            backgroundMusic.play();
+        });
+
+
+
+
+        function addSwipeGestures() {
+            const slideContainer = document.querySelector('.slide-container');
+            const hammer = new Hammer(slideContainer);
+
+            hammer.on('swipeleft', () => {
+                if (currentSlideIndex < slidesData.length - 1) {
+                    nextSlide();
+                }
+            });
+
+            hammer.on('swiperight', () => {
+                if (currentSlideIndex > 0) {
+                    prevSlide();
+                }
+            });
+        }
+        // ... Existing JavaScript code ...
+
+
+        function initialize() {
+            preloadMedia();
+            lazyLoadImages();
+            checkOrientation();
+
+            // Add swipe gestures for slide navigation in smartphone view
+            addSwipeGestures();
+        }
+
+        function checkOrientation() {
+            const rotateWarningContainer = document.getElementById('rotate-warning-container');
+            const storyContainer = document.getElementById('story-container');
+            const startContainer = document.getElementById('start-container');
+
+            if (window.matchMedia("(orientation: portrait)").matches || window.innerWidth < window.innerHeight) {
+                // Show the warning in portrait mode
+                rotateWarningContainer.style.display = 'flex';
+                storyContainer.style.display = 'none';
+                startContainer.style.display = 'none';
+            } else {
+                // Show the content in landscape mode
+                rotateWarningContainer.style.display = 'none';
+                storyContainer.style.display = 'block';
+                startContainer.style.display = 'block';
+            }
+        }
+
+        // Call checkOrientation on page load
+        checkOrientation();
+
+        // Listen for orientation changes and call checkOrientation
+        window.addEventListener('DOMContentLoaded', initialize);
+        window.addEventListener('orientationchange', checkOrientation);
+        window.addEventListener('resize', checkOrientation);
+
+        document.querySelectorAll('.start-button, .prev-button, .next-button, .start-again-button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                clickSound.currentTime = 0; // Reset the click sound to the beginning
+                clickSound.play();
+                clickSound.volume = 0.2;
+            });
+        });</script>
+</body>
+
+</html>
