@@ -1,0 +1,43 @@
+:root {
+  --bg: #050505;
+  --txt: #d4d4d4;
+  --head: #fff;
+  --acc: #666;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%; font-family: "Courier New", monospace;
+  background: var(--bg); color: var(--txt);
+  font-size: 16px; line-height: 1.5; overflow: hidden;
+}
+body {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 1rem;
+}
+.container {
+  width: 100%; max-width: 680px; position: relative;
+  display: flex; flex-direction: column; justify-content: center; height: 100%;
+}
+header { margin-bottom: 2rem; }
+h1 {
+  font-size: 2rem; color: var(--head); font-weight: 700; letter-spacing: -1px;
+}
+main { display: flex; flex-direction: column; gap: 1.25rem; }
+p { text-align: left; margin-bottom: 0.5rem; }
+a {
+  color: var(--head); text-decoration: underline; text-underline-offset: 3px;
+}
+a:hover { background: var(--head); color: var(--bg); text-decoration: none; }
+footer {
+  position: absolute; bottom: 1rem; width: 100%; text-align: center;
+  font-size: 0.8rem; color: var(--acc);
+}
+@media (min-width: 768px) {
+  html { font-size: 18px; }
+  h1 { font-size: 2.5rem; }
+}
+@media (max-height: 550px) {
+  body { overflow-y: auto; display: block; height: auto; }
+  .container { height: auto; padding-bottom: 3rem; }
+  footer { position: relative; margin-top: 2rem; bottom: auto; }
+}
